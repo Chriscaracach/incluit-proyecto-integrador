@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const config = require("config");
 
 const indexRouter = require("./src/routes/index");
 const usersRouter = require("./src/routes/users");
@@ -11,6 +12,7 @@ const app = express();
 
 //Mongoose
 const mongoose = require("mongoose");
+const mongoConnectionUrl = config.get("dataBase.host");
 mongoose
   .connect(mongoConnectionUrl, {
     useNewUrlParser: true,
@@ -20,8 +22,8 @@ mongoose
     console.log("connected to MongoDB");
   })
   .catch((err) => {
+    console.log("Error connecting database");
     console.log(err);
-    throw err;
   });
 
 app.use(logger("dev"));
