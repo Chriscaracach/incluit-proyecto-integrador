@@ -5,16 +5,14 @@ const {
   getAllSchools,
   getSchoolById,
   deleteSchoolById,
+  updateSchoolById,
 } = require("../controllers/schools.controller");
 
 router.get("/", getAllSchools);
 router.get("/:id", getSchoolById);
 router.post("/", addSchool);
 router.delete("/:id", deleteSchoolById);
-router.patch("/:id", function (req, res) {
-  //patch por id
-  res.send("respond with a resource");
-});
+router.patch("/:id", updateSchoolById);
 
 //Éstas rutas se dejan acá, lo único que se maneja desde otro lado so
 //las funciones, las tengo que mandar al controlador

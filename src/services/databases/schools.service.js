@@ -11,7 +11,7 @@ async function deleteSchool(id) {
 }
 
 async function updateSchool(id, schoolData) {
-  //Buscar funcion update en doc de mongoose
+  return School.findOneAndUpdate({ _id: id }, schoolData);
 }
 
 async function getSchools() {
