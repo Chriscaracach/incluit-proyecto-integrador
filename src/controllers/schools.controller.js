@@ -43,4 +43,16 @@ async function getSchoolById(req, res) {
     });
 }
 
-module.exports = { addSchool, getAllSchools, getSchoolById };
+async function deleteSchoolById(req, res) {
+  await deleteSchool(req.params.id)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.status(400);
+      console.error(error);
+      res.json(error);
+    });
+}
+
+module.exports = { addSchool, getAllSchools, getSchoolById, deleteSchoolById };

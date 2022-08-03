@@ -4,15 +4,13 @@ const {
   addSchool,
   getAllSchools,
   getSchoolById,
+  deleteSchoolById,
 } = require("../controllers/schools.controller");
 
 router.get("/", getAllSchools);
 router.get("/:id", getSchoolById);
 router.post("/", addSchool);
-router.delete("/:id", function (req, res) {
-  //Delete por id
-  res.send("respond with a resource");
-});
+router.delete("/:id", deleteSchoolById);
 router.patch("/:id", function (req, res) {
   //patch por id
   res.send("respond with a resource");
