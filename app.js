@@ -7,7 +7,6 @@ const config = require("config");
 
 const indexRouter = require("./src/routes/index");
 const schoolsRouter = require("./src/routes/schools");
-const usersRouter = require("./src/routes/users");
 
 const app = express();
 
@@ -35,6 +34,5 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/schools", schoolsRouter);
-//app.use("/users", usersRouter);
 
 module.exports = app;

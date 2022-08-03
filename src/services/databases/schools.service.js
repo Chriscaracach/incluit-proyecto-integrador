@@ -6,8 +6,7 @@ async function saveSchool(schoolData) {
 }
 
 async function deleteSchool(id) {
-  const result = await School.deleteOne({ _id: id });
-  return result;
+  return await School.deleteOne({ _id: id });
 }
 
 async function updateSchool(id, schoolData) {
@@ -22,10 +21,15 @@ async function getById(id) {
   return School.findById(id);
 }
 
+async function getByName(name) {
+  return School.find({ name: name });
+}
+
 module.exports = {
   saveSchool,
   deleteSchool,
   updateSchool,
   getSchools,
   getById,
+  getByName,
 };

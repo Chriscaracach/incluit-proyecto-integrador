@@ -1,21 +1,27 @@
-const School = require("../models/school.model");
 const {
   saveSchool,
   deleteSchool,
   updateSchool,
   getSchools,
   getById,
+  getByName,
 } = require("../services/databases/schools.service");
 
 async function addSchool(req, res) {
-  try {
-    const data = req.body;
-    const result = await saveSchool(data);
-    res.json(result);
-  } catch (error) {
-    console.error(err);
-    res.status(400);
-    res.json(err);
+  const { name } = req.body;
+  const school = await getByName(name);
+  if (school.name) {
+    res.json({ error: "A school with the same name already exists." });
+  } else {
+    await saveSchool(req.body)
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.status(400);
+        console.error(error);
+        res.json(error);
+      });
   }
 }
 
