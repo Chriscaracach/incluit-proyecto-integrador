@@ -5,6 +5,7 @@ const schoolSchema = new Schema({
   address: { type: String, required: true },
   students: { type: String },
   location: [{ lat: { type: String }, long: { type: String } }],
+  urlImg: { type: String },
 });
 
 const School = new model("School", schoolSchema);
